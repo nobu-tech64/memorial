@@ -4,8 +4,10 @@
 
 .body
   .sidebar
+    .sidebar__calendar
+      = month_calendar events: @notes do |date, notes|
+        = date.day
+        - notes.each do |note|
+          = note.name
   .main
-    = month_calendar events: @notes do |date, notes|
-      = date.day
-      - notes.each do |note|
-        = note.name
+
