@@ -1,9 +1,11 @@
 .header
   .header__title
-    まもののむれ
+    まもののむれ日記
 
 .body
   .sidebar
+    .sidebar__text
+      = link_to '日記を書く', new_note_path
     .sidebar__calendar
       = month_calendar events: @notes do |date, notes|
         = date.day
