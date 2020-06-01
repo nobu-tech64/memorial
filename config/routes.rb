@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root to: "notes#index"
-  resources :notes
+  resources :notes, only: [:index, :new, :create]
 end
