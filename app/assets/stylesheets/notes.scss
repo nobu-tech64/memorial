@@ -12,6 +12,9 @@
       tr{
         td{
           font-size: 10px;
+          a{
+            text-decoration: none;
+          }
         }
       }
     }
@@ -45,6 +48,7 @@
     &__calendar{
       padding: 10px;
       height: 400px;
+      text-decoration: none;
     }
   }
   .main{
@@ -52,15 +56,18 @@
     background-color: #fff;
     .diary{
       padding: 10px;
+      &__time{
+        display: flex;
+        justify-content: flex-start;
+        margin-right: 450px;
+      }
       &__title{
         font-size: 30px;
-        &--name{
+        width: 100%;
+        input{
           width: 100%;
-          input{
-            width: 100%;
-            height: 30px;
-            font-size: 20px;
-          }
+          height: 30px;
+          font-size: 20px;
         }
       }
       &__content{
@@ -73,7 +80,13 @@
       }
     }
     .save{
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      input{
+
+      }
     }
   }
 }

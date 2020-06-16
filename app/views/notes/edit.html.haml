@@ -1,7 +1,7 @@
 = form_for @note do |f|
   .header
     .header__title
-      まもののむれ日記
+      日記
 
   .body
     .sidebar
@@ -10,7 +10,8 @@
         = month_calendar events: @notes do |date, notes|
           = date.day
           - notes.each do |note|
-            = note.title
+            = link_to edit_note_path(note) do
+              = note.title
     .main
       .diary
         .diary__time

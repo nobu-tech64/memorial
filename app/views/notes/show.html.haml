@@ -5,13 +5,17 @@
 .body
   .sidebar
     .sidebar__text
-      = link_to '日記を書く', new_note_path
     .sidebar__calendar
       = month_calendar events: @notes do |date, notes|
         = date.day
         - notes.each do |note|
-          = link_to edit_note_path(note) do
+          = link_to note_path(note) do
             = note.title
-
   .main
-
+    .diary
+      .diary__time
+        = @note.start_time
+      .diary__title
+        = @note.title
+      .diary__content
+        = @note.content
