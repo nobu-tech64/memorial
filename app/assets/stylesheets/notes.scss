@@ -1,5 +1,10 @@
 .simple-calendar{
   height: 100%;
+  .calender-heading{
+    .calender-title{
+      
+    }
+  }
   table{
     thead{
       tr{
@@ -60,6 +65,15 @@
         display: flex;
         justify-content: flex-start;
         margin-right: 450px;
+        #note_start_time_1i{
+          width: 70px;
+        }
+        #note_start_time_2i{
+          width: 50px;
+        }
+        #note_start_time_3i{
+          width: 50px;
+        }
       }
       &__title{
         font-size: 30px;

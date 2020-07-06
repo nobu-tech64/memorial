@@ -1,7 +1,7 @@
 = form_for @note do |f|
   .header
     .header__title
-      まもののむれ日記
+      日記
 
   .body
     .sidebar
@@ -14,7 +14,7 @@
     .main
       .diary
         .diary__time
-          = f.datetime_select :start_time, discard_hour: true, discard_minute: true
+          = f.datetime_select :start_time, use_month_numbers: true, date_separator: '/',discard_hour: true, discard_minute: true
         .diary__title
           = f.text_field :title
         .diary__content
