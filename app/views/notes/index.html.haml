@@ -3,6 +3,7 @@
     .mainContainer__title
       日記
   .subContainer
+    MENU
   .menu#color
     .navigation-block
       %ul.navigation-list
@@ -14,12 +15,13 @@
 .body
   .sidebar
     .sidebar__text
-      = link_to '日記を書く', new_note_path
+      -# link_toごとにturbolinksを無効にする
+      = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
     .sidebar__calendar
       = month_calendar events: @notes do |date, notes|
         = date.day
         - notes.each do |note|
-          = link_to edit_note_path(note) do
+          = link_to edit_note_path(note), data: {"turbolinks" => false} do
             = note.title
 
   .main

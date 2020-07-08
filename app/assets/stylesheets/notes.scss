@@ -35,7 +35,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: double;
     position: absolute;
     &__title{
       font-family: 'Times New Roman', Times, serif;
@@ -44,10 +43,13 @@
   }
   .subContainer{
     position: relative;
-    border-bottom: double;
     width: 100px;
     height: 100px;
     background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     cursor: pointer;
   }
   .menu{
@@ -79,6 +81,7 @@
     width: 700px;
     background-color: #f8f8f8;
     border-right: groove;
+    border-top: groove;
     &__calendar{
       padding: 10px;
       height: 400px;
@@ -88,6 +91,7 @@
   .main{
     width: calc( 100% - 200px );
     background-color: #fff;
+    border-top: groove;
     .diary{
       padding: 10px;
       &__time{

@@ -1,8 +1,17 @@
 = form_for @note do |f|
   .header
-    .header__title
-      日記
-
+    .mainContainer
+      .mainContainer__title
+        日記
+    .subContainer
+      MENU
+    .menu#color
+      .navigation-block
+        %ul.navigation-list
+          %li.nav_menu1
+            %a{href: ""} 日付一覧
+          %li.nav_menu2
+            %a{href: ""} 内容一覧
   .body
     .sidebar
       .sidebar__text
@@ -10,7 +19,7 @@
         = month_calendar events: @notes do |date, notes|
           = date.day
           - notes.each do |note|
-            = link_to edit_note_path(note) do
+            = link_to edit_note_path(note), data: {"turbolinks" => false} do
               = note.title
     .main
       .diary
@@ -22,5 +31,5 @@
           = f.text_area :content
       .save
         = f.submit "保存する"
-        = link_to root_path do
+        = link_to root_path, data: {"turbolinks" => false} do
           = '戻る'
