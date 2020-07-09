@@ -30,10 +30,19 @@
         .diary__content
           = f.text_area :content
       .save
+        -# :javascript
+        -#   function submitChk(){
+        -#     let back = confirm('ほんまに削除しますか？');
+        -#     if (back == true){
+        -#       return back;
+        -#     }else{
+        -#       console.log(back);
+        -#     }
+        -#   }
         = f.submit "保存する", class: "submit_btn"
         .back_btn
           = link_to root_path, data: {"turbolinks" => false} do
             = '戻る'
         .delete_btn
-          = link_to note_path(params[:id]), method: :delete do
+          = link_to note_path(params[:id]), method: :delete, data: {confirm: '削除しますか？'} do
             = '削除'
