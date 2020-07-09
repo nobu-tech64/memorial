@@ -8,6 +8,8 @@
     .navigation-block
       %ul.navigation-list
         %li.nav_menu1
+          = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
+        %li.nav_menu1
           %a{href: ""} 日付一覧
         %li.nav_menu2
           %a{href: ""} 内容一覧
@@ -15,8 +17,6 @@
 .body
   .sidebar
     .sidebar__text
-      -# link_toごとにturbolinksを無効にする
-      = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
     .sidebar__calendar
       = month_calendar events: @notes do |date, notes|
         = date.day
