@@ -25,4 +25,7 @@
             = note.title
 
   .main
-
+    #existing_diary
+    .new_diary#newdiary
+      .new_diary__btn
+        = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
