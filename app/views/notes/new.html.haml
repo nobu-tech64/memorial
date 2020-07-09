@@ -1,7 +1,17 @@
 = form_for @note do |f|
   .header
-    .header__title
-      まもののむれ日記
+    .mainContainer
+      .mainContainer__title
+        日記
+    .subContainer
+      MENU
+    .menu#color
+      .navigation-block
+        %ul.navigation-list
+          %li.nav_menu1
+            %a{href: ""} 日付一覧
+          %li.nav_menu2
+            %a{href: ""} 内容一覧
 
   .body
     .sidebar
@@ -14,10 +24,13 @@
     .main
       .diary
         .diary__time
-          = f.datetime_select :start_time, discard_hour: true, discard_minute: true
+          = f.datetime_select :start_time, use_month_numbers: true, date_separator: '/',discard_hour: true, discard_minute: true
         .diary__title
           = f.text_field :title
         .diary__content
           = f.text_area :content
       .save
         = f.submit "保存する"
+        .back_btn
+          = link_to root_path, data: {"turbolinks" => false} do
+            = '戻る'
