@@ -30,8 +30,10 @@
         .diary__content
           = f.text_area :content
       .save
-        = f.submit "保存する"
-        = link_to note_path(params[:id]), method: :delete do
-          = '削除'
-        = link_to root_path, data: {"turbolinks" => false} do
-          = '戻る'
+        = f.submit "保存する", class: "submit_btn"
+        .back_btn
+          = link_to root_path, data: {"turbolinks" => false} do
+            = '戻る'
+        .delete_btn
+          = link_to note_path(params[:id]), method: :delete do
+            = '削除'

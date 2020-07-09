@@ -1,5 +1,9 @@
 .simple-calendar{
   height: 100%;
+  a{
+    text-decoration: none;
+    color: blue;
+  }
   .calender-heading{
     .calender-title{
       
@@ -36,8 +40,9 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    
     &__title{
-      font-family: 'Times New Roman', Times, serif;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: x-large;
     }
   }
@@ -49,6 +54,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
     color: white;
     cursor: pointer;
   }
@@ -92,8 +99,11 @@
     width: calc( 100% - 200px );
     background-color: #fff;
     border-top: groove;
+    background-image: url("/images/background3.jpeg");
+    background-size: cover;
     .diary{
       padding: 10px;
+      opacity: 0.5;
       &__time{
         display: flex;
         justify-content: flex-start;
@@ -134,10 +144,43 @@
       input{
         margin-right: 20px;
       }
-      a{
+      .delete_btn{
         text-decoration: none;
         margin-right: 20px;
+        width: 80px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EFEFEF;
+        border-style: outset;
+        border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+        border-width: 2px;
+        border-image: initial;
+        a{
+          text-decoration: none;
+          color: black;
+        }
       }
+      .back_btn{
+        text-decoration: none;
+        margin-right: 20px;
+        width: 80px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EFEFEF;
+        border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+        border-width: 2px;
+        border-style: outset;
+        border-image: initial;
+        a{
+          text-decoration: none;
+          color: black;
+        }
+      }
+
     }
   }
 }

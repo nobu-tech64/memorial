@@ -31,5 +31,6 @@
           = f.text_area :content
       .save
         = f.submit "保存する"
-        = link_to root_path, data: {"turbolinks" => false} do
-          = '戻る'
+        .back_btn
+          = link_to root_path, data: {"turbolinks" => false} do
+            = '戻る'
