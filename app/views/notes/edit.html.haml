@@ -19,6 +19,7 @@
         = month_calendar events: @notes do |date, notes|
           = date.day
           - notes.each do |note|
+            -# link_toで画面遷移したときに初めの一回目だけjavascriptが機能しないことがないようにdata: {"turbolinks" => false}を追加。
             = link_to edit_note_path(note), data: {"turbolinks" => false} do
               = note.title
     .main
@@ -30,6 +31,7 @@
         .diary__content
           = f.text_area :content
       .save
+        -# 削除ボタンクリック時に確認ダイアログを表示させるためのjs処理を追加したが、link_toの場合は通用しない様子
         -# :javascript
         -#   function submitChk(){
         -#     let back = confirm('ほんまに削除しますか？');
@@ -44,5 +46,6 @@
           = link_to root_path, data: {"turbolinks" => false} do
             = '戻る'
         .delete_btn
+          -# 削除ボタンをクリックしたときに確認ダイアログが表示されるようにオプション追加
           = link_to note_path(params[:id]), method: :delete, data: {confirm: '削除しますか？'} do
             = '削除'

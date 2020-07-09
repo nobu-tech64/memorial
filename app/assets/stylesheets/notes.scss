@@ -158,6 +158,7 @@
         border-width: 2px;
         border-image: initial;
         a{
+          // 保存するのボタンが黒なので削除ボタンも黒に
           text-decoration: none;
           color: black;
         }
@@ -176,6 +177,7 @@
         border-style: outset;
         border-image: initial;
         a{
+          // 保存するのボタンが黒なので戻るボタンも黒に
           text-decoration: none;
           color: black;
         }
