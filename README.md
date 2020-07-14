@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 投稿内容の一覧表示の実装方法について
+MENU→投稿一覧により、投稿内容の一覧を表示するページへ遷移する仕様にしている。
+当初はカレンダーの日付欄をクリックした際にその日の投稿内容が非同期に表示されるような実装を検討していた。JavaScriptのNode.jsを利用して実現できないか、今後実装を予定している。

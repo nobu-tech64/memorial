@@ -1,7 +1,7 @@
 .header
   .mainContainer
-    .mainContainer__title
-      日記
+    = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+      = "日記"
   .subContainer
     MENU
   .menu#color
@@ -9,10 +9,8 @@
       %ul.navigation-list
         %li.nav_menu1
           = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
-        %li.nav_menu1
-          %a{href: ""} 日付一覧
         %li.nav_menu2
-          %a{href: ""} 内容一覧
+          = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
 
 .body
   .sidebar
@@ -20,6 +18,7 @@
     .sidebar__calendar
       = month_calendar events: @notes do |date, notes|
         = date.day
+        %br
         - notes.each do |note|
           = link_to edit_note_path(note), data: {"turbolinks" => false} do
             = note.title
@@ -27,5 +26,4 @@
   .main
     #existing_diary
     .new_diary#newdiary
-      .new_diary__btn
-        = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
+      = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"

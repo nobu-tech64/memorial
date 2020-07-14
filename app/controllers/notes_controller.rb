@@ -17,7 +17,7 @@ class NotesController < ApplicationController
 
   def show
     @notes = Note.all
-    @note = Note.find(params[:id])
+    # @note = Note.find(params[:id])
   end
 
   def edit

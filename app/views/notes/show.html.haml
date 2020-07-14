@@ -1,21 +1,48 @@
+- console
 .header
-  .header__title
-    日記
+  .mainContainer
+    = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+      = "日記"
+  .subContainer
+    MENU
+  .menu#color
+    .navigation-block
+      %ul.navigation-list
+        %li.nav_menu1
+          = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
+        %li.nav_menu2
+          = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
 
 .body
   .sidebar
     .sidebar__text
     .sidebar__calendar
-      = month_calendar events: @notes do |date, notes|
-        = date.day
-        - notes.each do |note|
-          = link_to note_path(note) do
-            = note.title
+      -# 一覧表示を降順にした
+      - @notes = Note.all.order(start_time: "DESC")
+      - before_date = ''
+      -# ループでは初めの1つ目だけ日付が表示されないので、配列の1番目のみまず表示
+      = @notes[0].start_time.strftime("%Y年%m月%d日")
+      %br
+      -# データベースに保存されている日付とタイトルデータを全て表示する
+      - @notes.each do |note|
+        -# @notes[0]（降順にしたため最も未来日になっている）をbefore_dateに代入。
+        - before_date = note.start_time if before_date.blank?
+        
+        - if before_date == note.start_time
+          -# 前の日付と等しいなら日付は表示させず、タイトルのみ表示させる
+          = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
+          %br
+        
+        - else
+          -# 前の日付と違うならその日付とタイトルを表示させる
+          = note.start_time.strftime("%Y年%m月%d日")
+          %br
+          = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
+          %br
+        -# 前の日付を更新
+        - before_date = note.start_time
+
   .main
-    .diary
-      .diary__time
-        = @note.start_time
-      .diary__title
-        = @note.title
-      .diary__content
-        = @note.content
+    #existing_diary
+    .new_diary#newdiary
+      = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"

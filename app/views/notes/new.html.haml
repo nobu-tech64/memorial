@@ -1,17 +1,15 @@
 = form_for @note do |f|
   .header
     .mainContainer
-      .mainContainer__title
-        日記
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "日記"
     .subContainer
       MENU
     .menu#color
       .navigation-block
         %ul.navigation-list
           %li.nav_menu1
-            %a{href: ""} 日付一覧
-          %li.nav_menu2
-            %a{href: ""} 内容一覧
+            = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
 
   .body
     .sidebar
@@ -31,6 +29,5 @@
           = f.text_area :content
       .save
         = f.submit "保存する"
-        .back_btn
-          = link_to root_path, data: {"turbolinks" => false} do
-            = '戻る'
+        = link_to root_path, data: {"turbolinks" => false}, class: "back_btn" do
+          = '戻る'

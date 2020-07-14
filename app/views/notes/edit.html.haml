@@ -1,23 +1,22 @@
 = form_for @note do |f|
   .header
     .mainContainer
-      .mainContainer__title
-        日記
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "日記"
     .subContainer
       MENU
     .menu#color
       .navigation-block
         %ul.navigation-list
           %li.nav_menu1
-            %a{href: ""} 日付一覧
-          %li.nav_menu2
-            %a{href: ""} 内容一覧
+            = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
   .body
     .sidebar
       .sidebar__text
       .sidebar__calendar
         = month_calendar events: @notes do |date, notes|
           = date.day
+          %br
           - notes.each do |note|
             -# link_toで画面遷移したときに初めの一回目だけjavascriptが機能しないことがないようにdata: {"turbolinks" => false}を追加。
             = link_to edit_note_path(note), data: {"turbolinks" => false} do
@@ -42,10 +41,8 @@
         -#     }
         -#   }
         = f.submit "保存する", class: "submit_btn"
-        .back_btn
-          = link_to root_path, data: {"turbolinks" => false} do
-            = '戻る'
-        .delete_btn
-          -# 削除ボタンをクリックしたときに確認ダイアログが表示されるようにオプション追加
-          = link_to note_path(params[:id]), method: :delete, data: {confirm: '削除しますか？'} do
-            = '削除'
+        = link_to root_path, data: {"turbolinks" => false}, class: "back_btn" do
+          = '戻る'
+        -# 削除ボタンをクリックしたときに確認ダイアログが表示されるようにオプション追加
+        = link_to note_path(params[:id]), method: :delete, data: {confirm: '削除しますか？'}, class: "delete_btn" do
+          = '削除'

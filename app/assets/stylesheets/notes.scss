@@ -40,10 +40,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    cursor: pointer;
     &__title{
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: x-large;
+      text-decoration: none;
+      color: #000;
     }
   }
   .subContainer{
@@ -93,6 +94,10 @@
       padding: 10px;
       height: 400px;
       text-decoration: none;
+      a{
+        text-decoration: none;
+        color: blue;
+      }
     }
   }
   .main{
@@ -117,10 +122,8 @@
         box-shadow: 0px 0px 4px #99FF99;
         background-color: #99FF99;
         opacity: 0.7;
-        a{
-          text-decoration: none;
-          color: #000;
-        }
+        text-decoration: none;
+        color: #000;
       }
     }
     .diary{
@@ -167,7 +170,6 @@
         margin-right: 20px;
       }
       .delete_btn{
-        text-decoration: none;
         margin-right: 20px;
         width: 80px;
         height: 30px;
@@ -179,14 +181,10 @@
         border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
         border-width: 2px;
         border-image: initial;
-        a{
-          // 保存するのボタンが黒なので削除ボタンも黒に
-          text-decoration: none;
-          color: black;
-        }
+        text-decoration: none;
+        color: red;
       }
       .back_btn{
-        text-decoration: none;
         margin-right: 20px;
         width: 80px;
         height: 30px;
@@ -194,15 +192,12 @@
         justify-content: center;
         align-items: center;
         background-color: #EFEFEF;
-        border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
-        border-width: 2px;
         border-style: outset;
+        border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+        border-width: 1px;
         border-image: initial;
-        a{
-          // 保存するのボタンが黒なので戻るボタンも黒に
-          text-decoration: none;
-          color: black;
-        }
+        text-decoration: none;
+        color: blue;
       }
     }
   }
