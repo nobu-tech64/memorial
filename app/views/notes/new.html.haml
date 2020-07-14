@@ -17,6 +17,7 @@
       .sidebar__calendar
         = month_calendar events: @notes do |date, notes|
           = date.day
+          %br
           - notes.each do |note|
             = note.title
     .main
