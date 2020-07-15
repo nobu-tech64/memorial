@@ -19,7 +19,9 @@
           = date.day
           %br
           - notes.each do |note|
+            = "・"
             = note.title
+            %br
     .main
       .diary
         .diary__time

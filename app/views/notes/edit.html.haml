@@ -20,7 +20,9 @@
           - notes.each do |note|
             -# link_toで画面遷移したときに初めの一回目だけjavascriptが機能しないことがないようにdata: {"turbolinks" => false}を追加。
             = link_to edit_note_path(note), data: {"turbolinks" => false} do
+              = "・"
               = note.title
+              %br
     .main
       .diary
         .diary__time

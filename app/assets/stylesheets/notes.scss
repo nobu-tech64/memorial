@@ -96,6 +96,7 @@
     background-color: #f8f8f8;
     border-right: groove;
     border-top: groove;
+    overflow-y: scroll;
     &__calendar{
       padding: 10px;
       // height: 400px;
@@ -185,7 +186,7 @@
         background-color: #EFEFEF;
         border-style: outset;
         border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
-        border-width: 2px;
+        border-width: 1px;
         border-image: initial;
         text-decoration: none;
         color: red;

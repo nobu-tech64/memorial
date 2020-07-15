@@ -21,7 +21,9 @@
         %br
         - notes.each do |note|
           = link_to edit_note_path(note), data: {"turbolinks" => false} do
+            = "・"
             = note.title
+            %br
 
   .main
     #existing_diary
