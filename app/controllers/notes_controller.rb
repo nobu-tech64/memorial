@@ -44,6 +44,6 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:title, :content, :start_time)
+    params.require(:note).permit(:title, :content, :start_time).merge(user_id: current_user.id)
   end
 end

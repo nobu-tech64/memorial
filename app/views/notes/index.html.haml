@@ -11,6 +11,8 @@
           = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
         %li.nav_menu2
           = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
+        %li.nav_menu3
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
 
 .body
   .sidebar
@@ -20,12 +22,16 @@
         = date.day
         %br
         - notes.each do |note|
-          = link_to edit_note_path(note), data: {"turbolinks" => false} do
-            = "・"
-            = note.title
-            %br
+          - if user_signed_in? && (current_user.id == note.id)
+            = link_to edit_note_path(note), data: {"turbolinks" => false} do
+              = "・"
+              = note.title
+              %br
 
   .main
     #existing_diary
     .new_diary#newdiary
-      = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
+      - if user_signed_in?
+        = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
+      - else
+        = link_to '日記を書く', new_user_session_path, class: "new_diary__btn"

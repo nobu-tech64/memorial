@@ -19,9 +19,10 @@
           = date.day
           %br
           - notes.each do |note|
-            = "・"
-            = note.title
-            %br
+            - if user_signed_in? && (current_user.id == note.id)
+              = "・"
+              = note.title
+              %br
     .main
       .diary
         .diary__time
