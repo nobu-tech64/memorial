@@ -5,6 +5,10 @@
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
+    = f.label :nickname
+    %br/
+    = f.text_field :name, autofocus: true, autocomplete: "nickname"
+  .field
     = f.label :password
     %br/
     = f.password_field :password, autocomplete: "current-password"
