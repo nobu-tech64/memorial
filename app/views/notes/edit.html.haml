@@ -1,8 +1,12 @@
 = form_for @note do |f|
   .header
     .mainContainer
-      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
-        = "日記"
+      - if user_signed_in?
+        = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+          = "#{@user[current_user.id - 1].nickname}の日記"
+      - else
+        = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+          = "日記"
     .subContainer
       MENU
     .menu#color
@@ -18,11 +22,12 @@
           = date.day
           %br
           - notes.each do |note|
-            -# link_toで画面遷移したときに初めの一回目だけjavascriptが機能しないことがないようにdata: {"turbolinks" => false}を追加。
-            = link_to edit_note_path(note), data: {"turbolinks" => false} do
-              = "・"
-              = note.title
-              %br
+            - if user_signed_in? && (current_user.id == note.user_id)
+              -# link_toで画面遷移したときに初めの一回目だけjavascriptが機能しないことがないようにdata: {"turbolinks" => false}を追加。
+              = link_to edit_note_path(note), data: {"turbolinks" => false} do
+                = "・"
+                = note.title
+                %br
     .main
       .diary
         .diary__time

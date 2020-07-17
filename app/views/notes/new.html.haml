@@ -1,8 +1,12 @@
 = form_for @note do |f|
   .header
     .mainContainer
-      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
-        = "日記"
+      - if user_signed_in?
+        = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+          = "#{@user[current_user.id - 1].nickname}の日記"
+      - else
+        = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+          = "日記"
     .subContainer
       MENU
     .menu#color
@@ -19,7 +23,7 @@
           = date.day
           %br
           - notes.each do |note|
-            - if user_signed_in? && (current_user.id == note.id)
+            - if user_signed_in? && (current_user.id == note.user_id)
               = "・"
               = note.title
               %br

@@ -1,11 +1,13 @@
 class NotesController < ApplicationController
   def index
     @notes = Note.all
+    @user = User.all
   end
 
   def new
     @notes = Note.all
     @note = Note.new
+    @user = User.all
   end
 
   def create
@@ -17,12 +19,14 @@ class NotesController < ApplicationController
 
   def show
     @notes = Note.all
+    @user = User.all
     # @note = Note.find(params[:id])
   end
 
   def edit
     @notes = Note.all
     @note = Note.find(params[:id])
+    @user = User.all
   end
 
   def update

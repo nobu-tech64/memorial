@@ -1,7 +1,11 @@
 .header
   .mainContainer
-    = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
-      = "日記"
+    - if user_signed_in?
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "#{@user[current_user.id - 1].nickname}の日記"
+    - else
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "日記"
   .subContainer
     MENU
   .menu#color
@@ -24,22 +28,23 @@
       %br
       -# データベースに保存されている日付とタイトルデータを全て表示する
       - @notes.each do |note|
-        -# @notes[0]（降順にしたため最も未来日になっている）をbefore_dateに代入。
-        - before_date = note.start_time if before_date.blank?
-        
-        - if before_date == note.start_time
-          -# 前の日付と等しいなら日付は表示させず、タイトルのみ表示させる
-          = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
-          %br
-        
-        - else
-          -# 前の日付と違うならその日付とタイトルを表示させる
-          = note.start_time.strftime("%Y年%m月%d日")
-          %br
-          = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
-          %br
-        -# 前の日付を更新
-        - before_date = note.start_time
+        - if user_signed_in? && (current_user.id == note.user_id)
+          -# @notes[0]（降順にしたため最も未来日になっている）をbefore_dateに代入。
+          - before_date = note.start_time if before_date.blank?
+          
+          - if before_date == note.start_time
+            -# 前の日付と等しいなら日付は表示させず、タイトルのみ表示させる
+            = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
+            %br
+          
+          - else
+            -# 前の日付と違うならその日付とタイトルを表示させる
+            = note.start_time.strftime("%Y年%m月%d日")
+            %br
+            = link_to note.title, edit_note_path(note), date: {"turbolinks" => false}
+            %br
+          -# 前の日付を更新
+          - before_date = note.start_time
 
   .main
     #existing_diary
