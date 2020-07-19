@@ -25,17 +25,22 @@
 .body
   .sidebar
     .sidebar__text
-    .sidebar__calendar
-      = month_calendar events: @notes do |date, notes|
-        = date.day
-        %br
-        - notes.each do |note|
-          - if user_signed_in? && (current_user.id == note.user_id)
-            = link_to edit_note_path(note), data: {"turbolinks" => false} do
-              = "・"
-              = note.title
-              %br
-
+    - if user_signed_in?
+      .sidebar__calendar
+        = month_calendar events: @notes do |date, notes|
+          = date.day
+          %br
+          - notes.each do |note|
+            - if current_user.id == note.user_id
+              = link_to edit_note_path(note), data: {"turbolinks" => false} do
+                = "・"
+                = note.title
+                %br
+    - else
+      .sidebar__calendar
+        = month_calendar events: @notes do |date, notes|
+          = date.day
+          %br
   .main
     #existing_diary
     .new_diary#newdiary
