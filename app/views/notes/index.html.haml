@@ -1,6 +1,6 @@
 .header
   .mainContainer
-    - if user_signed_in?
+    - if user_signed_in? && current_user.id == note.user_id
       = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
         = "#{@user[current_user.id - 1].nickname}の日記"
     - else
@@ -31,7 +31,7 @@
           = date.day
           %br
           - notes.each do |note|
-            - if current_user.id == note.user_id
+            - if user_signed_in? && current_user.id == note.user_id
               = link_to edit_note_path(note), data: {"turbolinks" => false} do
                 = "・"
                 = note.title
@@ -44,7 +44,7 @@
   .main
     #existing_diary
     .new_diary#newdiary
-      - if user_signed_in?
+      - if user_signed_in? && current_user.id == note.user_id
         = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
       - else
         = link_to '日記を書く', new_user_session_path, class: "new_diary__btn"
