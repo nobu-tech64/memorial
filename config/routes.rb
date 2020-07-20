@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     # :passwords => 'users/passwords'
   }
   root to: "notes#index"
-  resources :users
+  resources :users, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :notes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end
