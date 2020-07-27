@@ -1,8 +1,5 @@
 - if current_user == nil
   .header
-    - if true then
-      logger.debug("if文の中に入りました")
-    - end
     .mainContainer
       - if user_signed_in?
         = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do

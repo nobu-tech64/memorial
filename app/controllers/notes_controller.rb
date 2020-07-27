@@ -2,6 +2,9 @@ class NotesController < ApplicationController
   def index
     @notes = Note.all
     @user = User.all
+    if true then
+      logger.debug("if文の中に入りました")
+    end
   end
 
   def new
