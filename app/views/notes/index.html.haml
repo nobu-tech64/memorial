@@ -1,103 +1,50 @@
-ああ
--# - if current_user == nil
--#   .header
--#     .mainContainer
--#       - if user_signed_in?
--#         = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
--#           = "#{@user[current_user.id - 1].nickname}の日記"
--#       - else
--#         = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
--#           = "日記"
--#     .subContainer
--#       MENU
--#     .menu#color
--#       .navigation-block
--#         %ul.navigation-list
--#           %li.nav_menu1
--#             = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
--#           %li.nav_menu2
--#             = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
--#           - if user_signed_in?
--#             %li.nav_menu3
--#               = link_to 'ログアウト', destroy_user_session_path, method: :delete
--#           - else
--#             %li.nav_menu4
--#               = link_to 'ログイン', new_user_session_path
+.header
+  .mainContainer
+    - if user_signed_in?
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "#{@user[current_user.id - 1].nickname}の日記"
+    - else
+      = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
+        = "日記"
+  .subContainer
+    MENU
+  .menu#color
+    .navigation-block
+      %ul.navigation-list
+        %li.nav_menu1
+          = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
+        %li.nav_menu2
+          = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
+        - if user_signed_in?
+          %li.nav_menu3
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          %li.nav_menu4
+            = link_to 'ログイン', new_user_session_path
 
--#   .body
--#     .sidebar
--#       .sidebar__text
--#       - if user_signed_in?
--#         .sidebar__calendar
--#           = month_calendar events: @notes do |date, notes|
--#             = date.day
--#             %br
--#             - notes.each do |note|
--#               - if user_signed_in? && current_user.id == note.user_id
--#                 = link_to edit_note_path(note), data: {"turbolinks" => false} do
--#                   = "・"
--#                   = note.title
--#                   %br
--#       - else
--#         .sidebar__calendar
--#           = month_calendar events: @notes do |date, notes|
--#             = date.day
--#             %br
--#     .main
--#       #existing_diary
--#       .new_diary#newdiary
--#         - if user_signed_in?
--#           = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
--#         - else
--#           = link_to '日記を書く', new_user_session_path, class: "new_diary__btn"
--# - else
--#   .header
--#     .mainContainer
--#       - if user_signed_in?
--#         = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
--#           = "#{@user[current_user.id - 1].nickname}の日記"
--#       - else
--#         = link_to root_path, class: "mainContainer__title", data: {"turbolinks" => false} do
--#           = "日記"
--#     .subContainer
--#       MENU
--#     .menu#color
--#       .navigation-block
--#         %ul.navigation-list
--#           %li.nav_menu1
--#             = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}
--#           %li.nav_menu2
--#             = link_to '投稿一覧', note_path(@notes), data: {"turbolinks" => false}
--#           - if user_signed_in?
--#             %li.nav_menu3
--#               = link_to 'ログアウト', destroy_user_session_path, method: :delete
--#           - else
--#             %li.nav_menu4
--#               = link_to 'ログイン', new_user_session_path
-
--#   .body
--#     .sidebar
--#       .sidebar__text
--#       - if user_signed_in?
--#         .sidebar__calendar
--#           = month_calendar events: @notes do |date, notes|
--#             = date.day
--#             %br
--#             - notes.each do |note|
--#               - if user_signed_in? && current_user.id == note.user_id
--#                 = link_to edit_note_path(note), data: {"turbolinks" => false} do
--#                   = "・"
--#                   = note.title
--#                   %br
--#       - else
--#         .sidebar__calendar
--#           = month_calendar events: @notes do |date, notes|
--#             = date.day
--#             %br
--#     .main
--#       #existing_diary
--#       .new_diary#newdiary
--#         - if user_signed_in?
--#           = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
--#         - else
--#           = link_to '日記を書く', new_user_session_path, class: "new_diary__btn"
+.body
+  .sidebar
+    .sidebar__text
+    - if user_signed_in?
+      .sidebar__calendar
+        = month_calendar events: @notes do |date, notes|
+          = date.day
+          %br
+          - notes.each do |note|
+            - if user_signed_in? && current_user.id == note.user_id
+              = link_to edit_note_path(note), data: {"turbolinks" => false} do
+                = "・"
+                = note.title
+                %br
+    - else
+      .sidebar__calendar
+        = month_calendar events: @notes do |date, notes|
+          = date.day
+          %br
+  .main
+    #existing_diary
+    .new_diary#newdiary
+      - if user_signed_in?
+        = link_to '日記を書く', new_note_path, data: {"turbolinks" => false}, class: "new_diary__btn"
+      - else
+        = link_to '日記を書く', new_user_session_path, class: "new_diary__btn"
